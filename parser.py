@@ -8,6 +8,8 @@
 # extract from clipboard
 
 
+import pandas as pd
+
 #filename = "C:/Users/eld02/Documents/4.coding_python/banking_parser/202206_scotia.txt"
 filename = "C:/Users/eld02/Documents/4.coding_python/banking_parser/202206_cta_corriente.txt"
 
@@ -129,6 +131,12 @@ def txnCTA(converted_list):
         
     for item in txn_list:
         print(item)
+
+
+    df = pd.DataFrame(txn_list)
+    print(df)
+    df.to_clipboard()
+
     return(txn_list)
 
 
@@ -137,6 +145,7 @@ def txnCTA(converted_list):
 #txnCC(converted_list)
 txnCTA(converted_list)
 
+print(pd.__version__)
 # myVar = "Hello World"
 # print(myVar)
 # print(4+4)
