@@ -10,20 +10,24 @@
 
 import pandas as pd
 
-#filename = "C:/Users/eld02/Documents/4.coding_python/banking_parser/202206_scotia.txt"
-filename = "C:/Users/eld02/Documents/4.coding_python/banking_parser/202206_cta_corriente.txt"
+cc = "C:/Users/eld02/Documents/4.coding_python/banking_parser/202206_scotia.txt"
+cta = "C:/Users/eld02/Documents/4.coding_python/banking_parser/202206_cta_corriente.txt"
 
 
-with open(filename,  encoding='utf8') as f:
-    lines = f.readlines()
+def ProcessFile(file):
+
+    with open(file,  encoding='utf8') as f:
+        lines = f.readlines()
 
 
-converted_list = []
+    converted_list = []
 
-for line in lines:
-    converted_list.append(line.strip())
+    for line in lines:
+        converted_list.append(line.strip())
 
-print(converted_list)
+    #print(converted_list)
+    
+    return(converted_list)
 
 # date_and_description = ""    
 # txn_type = ""
@@ -129,23 +133,26 @@ def txnCTA(converted_list):
                 amount = ""
 
         
-    for item in txn_list:
-        print(item)
+    # for item in txn_list:
+    #     print(item)
 
 
     df = pd.DataFrame(txn_list)
     print(df)
-    df.to_clipboard()
+    
 
-    return(txn_list)
+    return(df)
 
 
     
 
-#txnCC(converted_list)
-txnCTA(converted_list)
+result = txnCC(ProcessFile(cc))
+result = txnCTA(ProcessFile(cta))
 
-print(pd.__version__)
+result.to_clipboard()
+
+
+# print(pd.__version__)
 # myVar = "Hello World"
 # print(myVar)
 # print(4+4)
