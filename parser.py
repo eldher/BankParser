@@ -10,7 +10,7 @@
 
 import pandas as pd
 
-cc = "C:/Users/eld02/Documents/4.coding_python/banking_parser/202206_scotia.txt"
+cc = "C:/Users/eld02/Documents/4.coding_python/banking_parser/202206_cc.txt"
 cta = "C:/Users/eld02/Documents/4.coding_python/banking_parser/202206_cta_corriente.txt"
 
 
@@ -81,15 +81,18 @@ def txnCC(converted_list):
                 amount = ""
 
         
-    for item in txn_list:
-        print(item)
+    # for item in txn_list:
+    #     print(item)
+
+    df = pd.DataFrame(txn_list)
+    #print(df)
     
-    return(txn_list)
+    return(df)
+
+
 
 
 def txnCTA(converted_list):
-
-
 
     date_and_description = ""    
     amount = ""
@@ -135,9 +138,10 @@ def txnCTA(converted_list):
         
     # for item in txn_list:
     #     print(item)
-
-
     df = pd.DataFrame(txn_list)
+    
+    #list(df)
+
     print(df)
     
 
@@ -146,10 +150,10 @@ def txnCTA(converted_list):
 
     
 
-result = txnCC(ProcessFile(cc))
-result = txnCTA(ProcessFile(cta))
+cc = txnCC(ProcessFile(cc))
+cta = txnCTA(ProcessFile(cta))
 
-result.to_clipboard()
+cta.to_clipboard()
 
 
 # print(pd.__version__)
